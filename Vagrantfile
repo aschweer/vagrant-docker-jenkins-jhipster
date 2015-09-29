@@ -24,7 +24,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	config.vm.synced_folder "./jhipster", "/home/vagrant/jhipster", :create => true
 	config.vm.synced_folder "./scripts", "/home/scripts", :create => true
 	config.vm.synced_folder "./jenkins/home/", "/var/lib/jenkins", :create => true
-	
+
+  # get docker gpg key via shell script
+	config.vm.provision :shell, :path => "scripts/docker-key.sh"
 	
   # running script shell
 	config.vm.provision :shell, :path => "scripts/Bootstrap.sh"
